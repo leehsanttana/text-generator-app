@@ -1,9 +1,14 @@
 import React from 'react';
 import * as C from './styles';
 
-const options = ['left', 'center', 'right'];
-
-const InputSelect = ({ label, active, setActive, value, setValue }) => {
+const InputSelect = ({
+  label,
+  active,
+  setActive,
+  value,
+  setValue,
+  options,
+}) => {
   return (
     <C.InputSelect>
       <label htmlFor="">{label}</label>

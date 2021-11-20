@@ -15,13 +15,19 @@ const SelectStyleColumn = () => {
     setBackground,
     textAlign,
     setTextAlign,
+    fontWeight,
+    setFontWeight,
     letterSpacing,
     setLetterSpacing,
     lineHeight,
     setLineHeight,
   } = useContext(UserContext);
 
-  const [active, setActive] = useState(false);
+  const optionsTextAlign = ['left', 'center', 'right'];
+  const optionsFontWeight = ['lighter', 'normal', 'bold'];
+
+  const [activeTextAlign, setActiveTextAlign] = useState(false);
+  const [activeFontWeight, setActiveFontWeight] = useState(false);
   return (
     <C.SelectStyleColumn>
       <InputRange
@@ -53,10 +59,19 @@ const SelectStyleColumn = () => {
       />
       <InputSelect
         label="text-align:"
-        active={active}
-        setActive={setActive}
+        active={activeTextAlign}
+        setActive={setActiveTextAlign}
         value={textAlign}
         setValue={setTextAlign}
+        options={optionsTextAlign}
+      />
+      <InputSelect
+        label="font-weight:"
+        active={activeFontWeight}
+        setActive={setActiveFontWeight}
+        value={fontWeight}
+        setValue={setFontWeight}
+        options={optionsFontWeight}
       />
       <InputRange
         label="line-height:"

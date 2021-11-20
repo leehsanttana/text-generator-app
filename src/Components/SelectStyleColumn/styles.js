@@ -6,5 +6,5 @@ export const SelectStyleColumn = styled.section`
   border-radius: 4px;
   padding: 2em;
   overflow-y: scroll;
-  max-height: 621px;
+  max-height: 645px;
 `;

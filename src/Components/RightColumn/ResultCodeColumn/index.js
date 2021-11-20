@@ -1,56 +1,72 @@
 import { React, useContext, useState, useRef } from 'react';
 import { UserContext } from '../../../UserContext';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import * as C from './styles';
 
-const ResultCodeColumn = ({ debug }) => {
-  const { fontSize, letterSpacing, lineHeight, color, background, textAlign } =
-    useContext(UserContext);
-
-  const [button, setButton] = useState('Copiar');
-  const [value, setValue] = useState('');
+const ResultCodeColumn = () => {
+  const {
+    fontSize,
+    letterSpacing,
+    lineHeight,
+    color,
+    background,
+    textAlign,
+    fontWeight,
+  } = useContext(UserContext);
   const code = useRef();
+  const [isCopied, setIsCopied] = useState(false);
+
+  async function copyTextToClipboard(text) {
+    if ('clipboard' in navigator) {
+      return await navigator.clipboard.writeText(text);
+    } else {
+      return document.execCommand('copy', true, text);
+    }
+  }
 
   function copyStyles() {
-    setValue(code.current.innerText);
-    console.log(value);
-    setButton('copiado!');
-    setTimeout(() => {
-      setButton('copiar');
-    }, 1500);
+    copyTextToClipboard(code.current.innerText)
+      .then(() => {
+        setIsCopied(true);
+        setTimeout(() => {
+          setIsCopied(false);
+        }, 1500);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
     <C.ResultCodeColumn>
       <div ref={code}>
-        <span>{'.text-style {'} </span>
-        <p>
-          <span>font-size:</span> {fontSize}em;
-        </p>
-        <p>
-          <span>letter-spacing:</span> {letterSpacing}em;
-        </p>
-        <p>
-          <span>line-height:</span> {lineHeight};
-        </p>
-        <p>
-          <span>color:</span> {color};
-        </p>
-        <p>
-          <span>background:</span> {background};
-        </p>
-        <p>
-          <span>text-align:</span> {textAlign};
-        </p>
-        <span>{'}'}</span>
+        <pre>
+          <span className="open-close-style">.text-style {'{'}</span>
+          <span className="line-style">
+            <span className="atributte-style">font-size:</span> {fontSize}em;
+          </span>
+          <span className="line-style">
+            <span className="atributte-style">color:</span> {color};
+          </span>
+          <span className="line-style">
+            <span className="atributte-style">background:</span> {background};
+          </span>
+          <span className="line-style">
+            <span className="atributte-style">text-align:</span> {textAlign};
+          </span>
+          <span className="line-style">
+            <span className="atributte-style">font-weight:</span> {fontWeight};
+          </span>
+          <span className="line-style">
+            <span className="atributte-style">line-height:</span> {lineHeight};
+          </span>
+          <span className="line-style">
+            <span className="atributte-style">letter-spacing:</span>{' '}
+            {letterSpacing}em;
+          </span>
+          <span className="open-close-style">{'}'}</span>
+        </pre>
       </div>
-      <CopyToClipboard
-        options={{ debug: debug, message: '' }}
-        text={value}
-        onCopy={copyStyles}
-      >
-        <button>{button}</button>
-      </CopyToClipboard>
+      <button onClick={copyStyles}>{isCopied ? 'Copiado!' : 'Copiar'}</button>
     </C.ResultCodeColumn>
   );
 };

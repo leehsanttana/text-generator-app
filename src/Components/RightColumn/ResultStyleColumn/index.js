@@ -3,8 +3,15 @@ import { UserContext } from '../../../UserContext';
 import * as C from './styles';
 
 const ResultStyleColumn = () => {
-  const { fontSize, letterSpacing, lineHeight, color, background, textAlign } =
-    useContext(UserContext);
+  const {
+    fontSize,
+    letterSpacing,
+    lineHeight,
+    color,
+    background,
+    textAlign,
+    fontWeight,
+  } = useContext(UserContext);
   return (
     <C.ResultStyleColumn style={{ background: background }}>
       <p
@@ -14,6 +21,7 @@ const ResultStyleColumn = () => {
           lineHeight: lineHeight,
           color: color,
           textAlign: textAlign,
+          fontWeight: fontWeight,
         }}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis,

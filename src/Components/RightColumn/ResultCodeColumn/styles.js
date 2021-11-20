@@ -10,16 +10,6 @@ export const ResultCodeColumn = styled.section`
   padding: 1em;
   margin-top: 30px;
 
-  textarea {
-    background: var(--black);
-    outline: none;
-    height: 200px;
-    font-family: monospace;
-    color: var(--light-blue);
-    line-height: 1.4;
-    resize: none;
-  }
-
   button {
     padding: 1em;
     cursor: pointer;
@@ -42,22 +32,22 @@ export const ResultCodeColumn = styled.section`
     margin-bottom: 2em;
   }
 
-  p {
+  .open-close-style {
+    display: block;
+    font-family: monospace;
+    color: var(--pink);
+    margin-bottom: 0.8em;
+  }
+
+  .line-style {
+    display: block;
     font-family: monospace;
     margin-bottom: 0.5em;
     text-indent: 1em;
     color: var(--light-blue);
 
-    span {
-      display: inline;
+    .atributte-style {
       color: var(--alter-purple);
     }
-  }
-
-  span {
-    display: block;
-    font-family: monospace;
-    color: var(--pink);
-    margin-bottom: 0.8em;
   }
 `;

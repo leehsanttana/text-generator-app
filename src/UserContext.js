@@ -7,6 +7,7 @@ export const GlobalContext = ({ children }) => {
   const [color, setColor] = useState('#ffffff');
   const [background, setBackground] = useState('#1b1b1b');
   const [textAlign, setTextAlign] = useState('left');
+  const [fontWeight, setFontWeight] = useState('normal');
   const [letterSpacing, setLetterSpacing] = useState('0');
   const [lineHeight, setLineHeight] = useState('1.1');
 
@@ -18,6 +19,8 @@ export const GlobalContext = ({ children }) => {
     background,
     textAlign,
     setTextAlign,
+    fontWeight,
+    setFontWeight,
     setBackground,
     letterSpacing,
     setLetterSpacing,

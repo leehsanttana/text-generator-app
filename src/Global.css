@@ -63,7 +63,7 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 8px;
   height: 10px;
 }
 
@@ -78,5 +78,5 @@ code {
 
 ::-webkit-scrollbar-track {
   background: var(--black);
-  border-radius: 10px;
+  border-radius: 0;
 }
